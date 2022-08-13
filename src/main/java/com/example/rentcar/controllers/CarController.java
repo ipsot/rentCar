@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
 
@@ -31,13 +32,13 @@ public class CarController
     {
         Car car=carService.getCarById(id);
         model.addAttribute("car",car);
-        model.addAttribute("image",car.getImage());
+        model.addAttribute("image",car.getImages());
         return "main";
     }
 
 
     @PostMapping("/admin/car/add")
-    public String addCar(@RequestParam Car car,@RequestParam("file") MultipartFile file) throws IOException
+    public String addCar(@Valid Car car, @RequestParam("file") MultipartFile file) throws IOException
     {
         carService.addCar(car,file);
         return "redirect:/admin/cars";

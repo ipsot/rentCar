@@ -9,6 +9,7 @@ import lombok.NonNull;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +24,8 @@ public class Car
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "Price may not be empty")
-    private Double priceForDay;
+    @NotNull(message = "Price may not be empty")
+    private Integer priceForDay;
 
     private String carModel;
 
@@ -40,8 +41,8 @@ public class Car
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "car")
     private List<Client> clients;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "car")
-    private Image image;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "car")
+    private List<Image> images=new ArrayList<>();
 
     private Long previewImageId;
 
@@ -55,6 +56,7 @@ public class Car
     public void addImageToCar(Image image)
     {
         image.setCar(this);
+        images.add(image);
     }
 
 }

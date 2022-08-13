@@ -40,7 +40,7 @@ public class CarService
            car.addImageToCar(image);
        }
        Car carFromDb=carRepository.save(car);
-       carFromDb.setPreviewImageId(carFromDb.getImage().getId());
+       carFromDb.setPreviewImageId(carFromDb.getImages().get(0).getId());
        carRepository.save(car);
    }
 

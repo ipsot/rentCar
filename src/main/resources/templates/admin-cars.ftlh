@@ -23,7 +23,7 @@
         <tr>
             <th>${car.id}</th>
             <th>${car.priceForDay}</th>
-            <th><#list car.carModel as model>${model}</#list></th>
+            <th>${car.carModel}</th>
             <th>${car.carName}</th>
             <th>${car.color}</th>
             <th><#if car.isBooking>false<#else>true</#if></th>
@@ -39,7 +39,7 @@
     Добавить новую машину
 </a>
 <div class="collapse mb-3" id="collapseExample" style="">
-    <form action="/admin/car/addCar" method="post" enctype="multipart/form-data">
+    <form action="/admin/car/add" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="priceForDay">Price for day</label>
             <div class="input-group mb-3">
@@ -51,7 +51,7 @@
         </div>
         <div class="form-group">
             <label for="carModel">Car Model</label>
-            <select id="carModel" class="form-control">
+            <select id="carModel" name="carModel" class="form-control">
                 <option value="">Модель не выбрана</option>
                 <option value="AUDI">AUDI</option>
                 <option value="BMW">BMW</option>
@@ -59,19 +59,19 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="productName">Car name</label>
+            <label for="carName">Car name</label>
             <input type="text" required class="form-control"
-                   id="carName" name="title">
+                   id="carName" name="carName">
         </div>
         <div class="form-group">
-            <label for="price">Color</label>
+            <label for="color">Color</label>
             <div class="input-group mb-3">
                 <input type="text" required class="form-control" id="color" name="color">
             </div>
         </div>
         <div class="form-group">
             <div class="custom-file">
-                <input required type="file" name="file" id="file">
+                <input type="file" name="file" id="file">
                 <label class="custom-file-label" for="file">Image</label>
             </div>
         </div>
@@ -79,22 +79,22 @@
         <button type="submit" style="width: 100%" class="btn btn-dark">Добавить</button>
     </form>
 </div>
-<div class="card-columns">
-    <#list cars as car>
-        <a href="/cars/${car.id}" class="car-link">
-            <div class="card text-white bg-dark my-3 car">
-                <img src="/images/${car.previewImageId}"
-                     class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">${car.carName}</h5>
-                    <p class="card-text">${car.priceForDay} ₽</p>
-                </div>
-            </div>
-        </a>
-    <#else>
-        <h1 style="text-align: center">Не найдено</h1>
-    </#list>
-</div>
+<#--<div class="card-columns">-->
+<#--    <#list cars as car>-->
+<#--        <a href="/cars/${car.id}" class="car-link">-->
+<#--            <div class="card text-white bg-dark my-3 car">-->
+<#--                <img src="/images/${car.previewImageId}"-->
+<#--                     class="card-img-top">-->
+<#--                <div class="card-body">-->
+<#--                    <h5 class="card-title">${car.carName}</h5>-->
+<#--                    <p class="card-text">${car.priceForDay} ₽</p>-->
+<#--                </div>-->
+<#--            </div>-->
+<#--        </a>-->
+<#--    <#else>-->
+<#--        <h1 style="text-align: center">Не найдено</h1>-->
+<#--    </#list>-->
+<#--</div>-->
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

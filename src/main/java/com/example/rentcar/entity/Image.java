@@ -3,6 +3,7 @@ package com.example.rentcar.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 
@@ -22,10 +23,11 @@ public class Image
     private String contentType;
     private boolean previewImage;
 
+    //@Type(type="org.hibernate.type.BinaryType")
     @Lob
     private byte[] bytes;
 
-    @OneToOne(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
     @JoinColumn(name = "car_id")
     private Car car;
 
