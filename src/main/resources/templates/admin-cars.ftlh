@@ -71,8 +71,8 @@
         </div>
         <div class="form-group">
             <div class="custom-file">
-                <input type="file" name="file" id="file">
-                <label class="custom-file-label" for="file">Image</label>
+                <input type="file" name="file">
+<#--                <label class="custom-file-label" for="file">Image</label>-->
             </div>
         </div>
 

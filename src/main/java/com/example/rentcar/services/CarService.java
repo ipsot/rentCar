@@ -44,6 +44,10 @@ public class CarService
        carRepository.save(car);
    }
 
+//   public Car editCar(Long id,Car car,MultipartFile file){
+//        carRepository.findById(id);
+//   }
+
 
    private Image toImageEntity(MultipartFile file) throws IOException
    {

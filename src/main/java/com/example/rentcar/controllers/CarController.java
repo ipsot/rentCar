@@ -9,9 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.beans.Transient;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -23,6 +26,7 @@ public class CarController
     @GetMapping("/")
     public String index(Model model)
     {
+        List<Car> cars=carService.getAllCar();
         model.addAttribute("cars",carService.getAllCar());
         return "main";
     }
@@ -32,8 +36,8 @@ public class CarController
     {
         Car car=carService.getCarById(id);
         model.addAttribute("car",car);
-        model.addAttribute("image",car.getImages());
-        return "main";
+        model.addAttribute("images",car.getImages());
+        return "car-info";
     }
 
 

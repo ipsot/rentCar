@@ -25,6 +25,7 @@ public class Image
 
     //@Type(type="org.hibernate.type.BinaryType")
     @Lob
+    @Type(type = "org.hibernate.type.ImageType")
     private byte[] bytes;
 
     @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)

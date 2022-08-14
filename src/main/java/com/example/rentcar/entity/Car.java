@@ -37,10 +37,6 @@ public class Car
 
     private Boolean isBooking;
 
-
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "car")
-    private List<Client> clients;
-
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "car")
     private List<Image> images=new ArrayList<>();
 
