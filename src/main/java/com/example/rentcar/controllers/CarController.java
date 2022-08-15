@@ -4,6 +4,7 @@ import com.example.rentcar.entity.Car;
 import com.example.rentcar.services.CarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +39,14 @@ public class CarController
         model.addAttribute("car",car);
         model.addAttribute("images",car.getImages());
         return "car-info";
+    }
+
+    @PostMapping("/car/{id}/rent")
+    public String doRentThisCar(@PathVariable Long id, Model model){
+        Car car=carService.getCarById(id);
+        model.addAttribute("car",car);
+        model.addAttribute("images",car.getImages());
+        return "redirect:/addRecord/{carId}";
     }
 
 

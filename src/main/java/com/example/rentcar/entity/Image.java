@@ -23,7 +23,6 @@ public class Image
     private String contentType;
     private boolean previewImage;
 
-    //@Type(type="org.hibernate.type.BinaryType")
     @Lob
     @Type(type = "org.hibernate.type.ImageType")
     private byte[] bytes;
