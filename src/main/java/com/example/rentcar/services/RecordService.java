@@ -24,4 +24,9 @@ public class RecordService {
     public List<Record> getAllRecords(){
         return recordRepository.findAll();
     }
+
+    public void deleteRecord(Long id)
+    {
+        recordRepository.deleteById(id);
+    }
 }

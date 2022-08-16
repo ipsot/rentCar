@@ -14,49 +14,49 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CarService
-{
+public class CarService {
     private final CarRepository carRepository;
     private final ImageRepository imageRepository;
 
-    public List<Car> getAllCar()
-    {
+    public List<Car> getAllCar() {
         return carRepository.findAll();
     }
 
-    public Car getCarById(Long id)
-    {
+    public Car getCarById(Long id) {
         return carRepository.findById(id).orElse(null);
     }
 
 
-   public void addCar(Car car,MultipartFile file) throws IOException
-   {
-       Image image;
-       if (file.getSize() !=0)
-       {
-           image=toImageEntity(file);
-           image.setPreviewImage(true);
-           car.addImageToCar(image);
-       }
-       Car carFromDb=carRepository.save(car);
-       carFromDb.setPreviewImageId(carFromDb.getImages().get(0).getId());
-       carRepository.save(car);
-   }
+    public void addCar(Car car, MultipartFile file) throws IOException {
+        Image image;
+        if (file.getSize() != 0) {
+            image = toImageEntity(file);
+            image.setPreviewImage(true);
+            car.addImageToCar(image);
+        }
+        Car carFromDb = carRepository.save(car);
+        carFromDb.setPreviewImageId(carFromDb.getImages().get(0).getId());
+        carRepository.save(car);
+    }
 
 //   public Car editCar(Long id,Car car,MultipartFile file){
 //        carRepository.findById(id);
 //   }
 
 
-   private Image toImageEntity(MultipartFile file) throws IOException
-   {
-       Image image=new Image();
-       image.setName(file.getName());
-       image.setOriginalFileName(file.getContentType());
-       image.setContentType(file.getContentType());
-       image.setSize(file.getSize());
-       image.setBytes(file.getBytes());
-       return image;
-   }
+    private Image toImageEntity(MultipartFile file) throws IOException {
+        Image image = new Image();
+        image.setName(file.getName());
+        image.setOriginalFileName(file.getContentType());
+        image.setContentType(file.getContentType());
+        image.setSize(file.getSize());
+        image.setBytes(file.getBytes());
+        return image;
+    }
+
+    public Car editCar(Long id, Car car) {
+        car.setId(id);
+        car.setIsBooking(false);
+        return carRepository.saveAndFlush(car);
+    }
 }

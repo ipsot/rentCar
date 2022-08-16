@@ -27,6 +27,10 @@
             <th>${car.carName}</th>
             <th>${car.color}</th>
             <th><#if car.isBooking>false<#else>true</#if></th>
+            <th>
+                <button type="button" class="btn btn-sm btn-outline-secondary"><a
+                            href="/car/edit/${car.id}" style="color: black"> Edit </a></button>
+            </th>
         </tr>
     <#else>
         <h3>Машин нет</h3>

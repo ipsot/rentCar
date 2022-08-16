@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/car/{id}" method="get" enctype="multipart/form-data">
+<form action="/car/${id}" method="get" enctype="multipart/form-data">
     <#list images as img>
         <img src="/images/${img.id}" height="300px">
     </#list>
@@ -21,7 +21,7 @@
 <#--    <button type="button" class="btn btn-sm btn-outline-secodary"><a href="/records"> See records </a> </button>-->
 
     <form action="/addRecord/${car.id}" method="get">
-        <input type="hidden" name="id" value="${car.id}">
+        <input type="hidden" name="carId" value="${car.id}">
         <button type="button" class="btn btn-sm btn-outline-secondary"><a href="/addRecord/${id}" style="color: black"> Rent car</a></button>
     </form>
 

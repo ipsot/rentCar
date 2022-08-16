@@ -8,10 +8,7 @@ import com.example.rentcar.services.RecordService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.Console;
 
@@ -25,6 +22,7 @@ public class RecordController {
     @PostMapping("/addRecord/{carId}")
     public String addRecord(Record record,Car car,Long carId){
         car.setId(carId);
+        car.setIsBooking(true);
         record.setCar(car);
         recordService.createRecord(record);
 
@@ -43,5 +41,12 @@ public class RecordController {
         model.addAttribute("records",recordService.getAllRecords());
 
         return "records";
+    }
+
+    @PostMapping("/deleteRecord/{id}")
+    public String deleteRecord(@PathVariable Long id){
+        recordService.deleteRecord(id);
+
+        return "redirect:/records";
     }
 }

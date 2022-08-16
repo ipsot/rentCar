@@ -64,26 +64,27 @@
                     <div class="col">
                         <div class="card shadow-sm">
                             <img src="/images/${car.previewImageId}">
-<#--                            <#list images as img>-->
-<#--                                <img src="/images/${img.id}" height="auto">-->
-<#--                            </#list>-->
+                            <#--                            <#list images as img>-->
+                            <#--                                <img src="/images/${img.id}" height="auto">-->
+                            <#--                            </#list>-->
                             <div class="card-body">
                                 <p class="card-text">${car.carModel}</p>
                                 <p class="card-text">${car.carName}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="/car/${car.id}" style="color: black"> View </a></button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"><a
+                                                    href="/car/${car.id}" style="color: black"> View </a></button>
                                     </div>
                                     <small class="text-muted">${car.priceForDay}</small>
                                 </div>
                             </div>
-<#--                            <th>${car.priceForDay}</th>-->
-<#--                            <th>${car.carModel}</th>-->
-<#--                            <th>${car.carName}</th>-->
-<#--                            <th>${car.color}</th>-->
-<#--                            <th><#if car.isBooking>false<#else>true</#if></th>-->
-<#--                            <#else>-->
-<#--                                <h3>Машин нет</h3>-->
+                            <#--                            <th>${car.priceForDay}</th>-->
+                            <#--                            <th>${car.carModel}</th>-->
+                            <#--                            <th>${car.carName}</th>-->
+                            <#--                            <th>${car.color}</th>-->
+                            <#--                            <th><#if car.isBooking>false<#else>true</#if></th>-->
+                            <#--                            <#else>-->
+                            <#--                                <h3>Машин нет</h3>-->
                             </#list>
                         </div>
                     </div>

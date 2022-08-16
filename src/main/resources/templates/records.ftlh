@@ -25,6 +25,11 @@
             <th>${record.age}</th>
             <th>${record.driverLicense}</th>
             <th>${record.car.id}</th>
+            <th>
+                <form action="/deleteRecord/${record.id}" method="post">
+                    <button type="submit">Delete record</button>
+                </form>
+            </th>
         </tr>
     </#list>
 </table>

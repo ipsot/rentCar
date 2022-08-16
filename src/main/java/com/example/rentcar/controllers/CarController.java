@@ -41,13 +41,13 @@ public class CarController
         return "car-info";
     }
 
-    @PostMapping("/car/{id}/rent")
-    public String doRentThisCar(@PathVariable Long id, Model model){
-        Car car=carService.getCarById(id);
-        model.addAttribute("car",car);
-        model.addAttribute("images",car.getImages());
-        return "redirect:/addRecord/{carId}";
-    }
+//    @PostMapping("/car/{id}/rent")
+//    public String doRentThisCar(@PathVariable Long id, Model model){
+//        Car car=carService.getCarById(id);
+//        model.addAttribute("car",car);
+//        model.addAttribute("images",car.getImages());
+//        return "redirect:/addRecord/{carId}";
+//    }
 
 
     @PostMapping("/admin/car/add")
@@ -56,6 +56,24 @@ public class CarController
         carService.addCar(car,file);
         return "redirect:/admin/cars";
     }
+
+    @GetMapping("/car/edit/{id}")
+    public String editCar(@PathVariable Long id, Model model){
+
+        Car car=carService.getCarById(id);
+        model.addAttribute("car",car);
+        model.addAttribute("images",car.getImages());
+
+        return "editCar";
+
+    }
+
+    @PostMapping("/car/edit/{id}")
+    public String updateCar(@Valid Car car,@PathVariable Long id){
+        carService.editCar(id,car);
+        return "redirect:/";
+    }
+
 
 //    @DeleteMapping("/car/delete/{id}")
 //    public String deleteCar(@PathVariable Long id)
